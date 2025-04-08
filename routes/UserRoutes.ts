@@ -5,11 +5,11 @@ var bcrypt = require('bcryptjs');
 var bodyParser = require("body-parser");
 
 var userModel = require("../models/user");
-var patientModel = require("../models/patient");
-var physicianModel = require("../models/physician");
+var patientModel = require("../models/paciente");
+var physicianModel = require("../models/medico");
 var VerifyToken = require("../auth/VerifyToken");
 
-//import {FormAnswers} from "../models/patient";
+const userRoutes = require('./routes/UserRoutes');
 
 
 var router = express.Router();
@@ -270,104 +270,6 @@ router.get('/ListUsers',  VerifyToken, async function(req:any, res:any){
 }
 });
 
-/*
-async function generateAlerts(patient: FormAnswers): Promise<String[]> {
-  const alerts: String[] = [];
-
-  const { personalInfo, medicalHistory, lifestyle, familyHistory } = patient;
-
-  var recom:boolean = false;
-
-  if (
-      personalInfo.age !== undefined &&
-      medicalHistory.comorbidities !== undefined &&
-      lifestyle.exercisesRegularly !== undefined &&
-      lifestyle.smokes !== undefined &&
-      familyHistory.cancer !== undefined &&
-      familyHistory.heartDisease !== undefined
-  ) {
-      if (personalInfo.age > 65 && medicalHistory.comorbidities.includes('diabetes')) {
-          alerts.push('Recorrer ao programa de controle glicêmico em idosos.');
-          recom = true;
-      } 
-      
-      if (
-          personalInfo.age > 50 &&
-          personalInfo.gender === 'Masculino' &&
-          familyHistory.heartDisease &&
-          !lifestyle.exercisesRegularly
-      ) {
-          if (
-              medicalHistory.comorbidities.includes('diabetes') &&
-              medicalHistory.comorbidities.includes('hipertensão')
-          ) {
-              alerts.push('O paciente tem risco cardiovascular muito elevado. Marcar uma avaliação cardíaca preventiva com prioridade!');
-              recom = true;
-          } else if (
-              medicalHistory.comorbidities.includes('diabetes') &&
-              !medicalHistory.comorbidities.includes('hipertensão')
-          ) {
-              alerts.push('O paciente tem risco cardiovascular alto. Recomenda-se marcar uma avaliação cardíaca preventiva!');
-              recom = true;
-          } else if (
-              !medicalHistory.comorbidities.includes('diabetes') &&
-              !medicalHistory.comorbidities.includes('hipertensão')
-          ) {
-              alerts.push('O paciente tem risco cardiovascular moderado. Marcar consulta para verificar a necessidade de uma avaliação cardíaca preventiva!');
-              recom = true;
-          }
-      } 
-      
-      if (personalInfo.age > 40 && familyHistory.cancer && lifestyle.smokes) {
-          alerts.push('O paciente deve realizar exames de rastreio para o cancro frequentemente.');
-          recom = true;
-      } 
-      
-      if (personalInfo.age > 40 && !lifestyle.exercisesRegularly) {
-          if (medicalHistory.comorbidities.length === 0 && !familyHistory.heartDisease) {
-              alerts.push('Recomenda-se iniciar um programa de exercícios físicos moderados.');
-              recom = true;
-          } else {
-              alerts.push('Recomenda-se iniciar um programa de exercícios físicos prescritos após avaliação médica.');
-              recom = true;
-          }
-      } 
-      
-      if (
-          personalInfo.age > 50 &&
-          personalInfo.age <= 65 &&
-          medicalHistory.comorbidities.length > 0
-      ) {
-          alerts.push('O paciente deve ser incluído na fila prioritária de vacinas contra gripe.');
-          recom = true;
-      } 
-      
-      if (medicalHistory.comorbidities.includes('diabetes') && familyHistory.heartDisease) {
-          alerts.push('Recomenda-se um controle mais rígido dos níveis de glicose e avaliações cardíacas regulares.');
-          recom = true;
-      } 
-      
-      if (personalInfo.age > 50 && familyHistory.cancer) {
-          alerts.push('Recomenda-se uma dieta rica em fibras e antioxidantes.');
-          recom = true;
-      } 
-      
-      if (personalInfo.age > 50 && lifestyle.smokes && medicalHistory.comorbidities.includes('DPOC')) {
-          alerts.push('O paciente deve ser submetido a uma avaliação pulmonar detalhada.');
-          recom = true;
-      } 
-      
-      if(recom === false){
-          console.log('Nenhum alerta ou recomendação para este paciente.');
-      }
-  } else {
-      console.error('Não há respostas no formulário ou há campos em falta.');
-  }
-
-  return alerts;
-}
-*/
-
 async function hasRole(userEmail: any, role: string, res: any):Promise<boolean> {
  
       const user = await userModel.findOne({ email: userEmail }).exec();
@@ -385,6 +287,5 @@ async function hasRole(userEmail: any, role: string, res: any):Promise<boolean> 
       return false;
   
 }
-
 
 module.exports = router;

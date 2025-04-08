@@ -1,12 +1,14 @@
 // Importações
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 const mongodbUri = process.env.MONGODB_URI;
+const bcrypt = require('bcryptjs');
 
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var UserRoutes = require('./routes/UserRoutes');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -21,7 +23,7 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080; // Definir a porta
 
 var mongoose   = require('mongoose'); // Conexão com a base de dados (MongoDB)
-mongoose.connect('mongodb+srv://juliobsouza:B4yPxWoP1X0FysAB@infme.epzihtd.mongodb.net/?retryWrites=true&w=majority&appName=infme'); 
+mongoose.connect(mongodbUri); 
 
 // Registar as rotas (defininas no ficheiro UserRoutes)
 var UserRoutes = require('./routes/UserRoutes');
