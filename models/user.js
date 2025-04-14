@@ -8,7 +8,7 @@ var accountType;
     accountType["paciente"] = "PACIENTE";
     accountType["medico"] = "MEDICO";
 })(accountType || (accountType = {}));
-var userSchema = new Schema({
+const userSchema = new Schema({
     name: { type: String, required: true },
     password: { type: String, required: true },
     email: { type: String, required: true },
@@ -19,6 +19,6 @@ var userSchema = new Schema({
     },
     isAdmin: { type: Boolean, default: false }, //n sei se são precisos admins, portanto por agora fica
 });
-var userModel = mongoose.model('User', userSchema);
+const userModel = mongoose.model('User', userSchema);
 exports.User = userModel;
 //module.exports = userModel;

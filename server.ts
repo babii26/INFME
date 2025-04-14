@@ -5,6 +5,8 @@ dotenv.config();
 const mongodbUri = process.env.MONGODB_URI;
 const bcrypt = require('bcryptjs');
 
+console.log("Projeto init");
+
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
@@ -24,6 +26,8 @@ var port = process.env.PORT || 8080; // Definir a porta
 
 var mongoose   = require('mongoose'); // Conexão com a base de dados (MongoDB)
 mongoose.connect(mongodbUri); 
+
+console.log("este e o projeto");
 
 // Registar as rotas (defininas no ficheiro UserRoutes)
 var UserRoutes = require('./routes/UserRoutes');

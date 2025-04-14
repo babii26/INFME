@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 function VerifyToken(req, res, next) {
     var token = req.headers['x-access-token'];
     if (!token)

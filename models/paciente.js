@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var patientSchema = new Schema({
+const patientSchema = new Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     medico: { type: mongoose.Schema.Types.ObjectId, ref: 'Medico' },
     peso: { type: Number, required: true },

@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Physician = void 0;
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-var user_1 = require("./user");
-var physicianSchema = new Schema({
+const user_1 = require("./user");
+const physicianSchema = new Schema({
     licençaMedica: { type: String, required: true },
     alerts: [{
             alertNumber: { type: Number, default: 0 },

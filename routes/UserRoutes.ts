@@ -9,19 +9,16 @@ var patientModel = require("../models/paciente");
 var physicianModel = require("../models/medico");
 var VerifyToken = require("../auth/VerifyToken");
 
-const userRoutes = require('./routes/UserRoutes');
-
-
 var router = express.Router();
 var jwt = jwt
 
 // rota para testar - GET http://localhost:8080/med)
-router.get('/', function(req, res) {
+router.get('/', function(req:any, res:any) {
   res.json({ message: 'Bem vindo ao Med-Checker!!' });
 });
 
 // Rota para registar um utilizador - POST http://localhost:8080/med/Register/User
-router.post('/Register/User', async function(req, res) {
+router.post('/Register/User', async function(req:any, res:any) {
   try {
     const {name, email, password, isAdmin} = req.body; // Extrair as variáveis do corpo da requisição
 
@@ -44,7 +41,7 @@ router.post('/Register/User', async function(req, res) {
 
 
 // Rota para registar um médico - POST http://localhost:8080/med/Register/Physician
-router.post('/Register/Physician', async function(req, res) {
+router.post('/Register/Physician', async function(req:any, res:any) {
     try {
       const {specialty, user} = req.body; 
   
@@ -64,7 +61,7 @@ router.post('/Register/Physician', async function(req, res) {
   });
 
 // Rota para registar um paciente - POST http://localhost:8080/med/Register/Patient
-router.post('/Register/Patient', async function(req, res) {
+router.post('/Register/Patient', async function(req:any, res:any) {
     
   try {
     const {physician, user} = req.body; 
