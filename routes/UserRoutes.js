@@ -17,7 +17,6 @@ var userModel = require("../models/user");
 var patientModel = require("../models/paciente");
 var physicianModel = require("../models/medico");
 var VerifyToken = require("../auth/VerifyToken");
-//const userRoutes = require('./routes/UserRoutes');
 var router = express.Router();
 var jwt = jwt;
 // rota para testar - GET http://localhost:8080/med)
