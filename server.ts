@@ -11,6 +11,7 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var UserRoutes = require('./routes/UserRoutes');
+var formularioRoutes = require('./routes/UserRoutes');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -32,6 +33,15 @@ console.log("este e o projeto");
 // Registar as rotas (defininas no ficheiro UserRoutes)
 var UserRoutes = require('./routes/UserRoutes');
 app.use('/med', UserRoutes);
+
+// Registar as rotas (defininas no ficheiro formularioRoutes)
+var formularioRoutes = require('./routes/formularioRoutes');
+app.use('/formulario', formularioRoutes);
+
+
+
+
+
 
 // Iniciar o servidor
 app.listen(port);

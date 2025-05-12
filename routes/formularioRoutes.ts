@@ -91,6 +91,7 @@ router.get('/respostas/:pacienteId', async (req, res) => {
     console.error('Erro ao buscar respostas:', err);
     res.status(500).json({ error: 'Erro ao buscar respostas' });
   }
+  
 });
 
 export default router;
