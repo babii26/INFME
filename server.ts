@@ -1,5 +1,6 @@
 // Importações
 import * as dotenv from 'dotenv';
+
 dotenv.config();
 
 const mongodbUri = process.env.MONGODB_URI;
@@ -17,7 +18,7 @@ var AlertaRoutes = require('./routes/AlertaRoutes');
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router();   
-var app = express(); // Definir a app através do express
+//var app = express(); // Definir a app através do express
 
 // Configurações para o uso do bodyParser()
 // Permite a extraçao dos dados obtidos com o método POST
@@ -35,12 +36,10 @@ console.log("este e o projeto");
 var UserRoutes = require('./routes/UserRoutes');
 app.use('/med', UserRoutes);
 
-// Registar as rotas (defininas no ficheiro formularioRoutes)
-var formularioRoutes = require('./routes/formularioRoutes');
+// Definição das rotas
+//app.use('/med', UserRoutes);
 app.use('/formulario', formularioRoutes);
-
-var AlertaRoutes = require ('./routes/AlertaRoutes');
-app.use('/alerta', AlertaRoutes);
+app.use('/alertas', AlertaRoutes);
 
 
 
