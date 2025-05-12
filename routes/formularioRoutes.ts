@@ -36,10 +36,10 @@ router.post('/responder', async (req:any, res:any) => {
       risco
     });
 
-    const mensagem = `O paciente ${pacienteId} tem risco ${risco} de cancro da próstata.`;
+    const mensagem = `O paciente ${pacienteId} tem ${risco} risco  de cancro da próstata.`;
 
     await Alerta.create({
-      pacienteId,
+      pacienteId, 
       medicoId,
       mensagem,
       risco
