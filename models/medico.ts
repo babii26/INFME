@@ -1,13 +1,9 @@
-import { mongo } from "mongoose";
-
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-//import { User } from './user';
-
 const physicianSchema = new Schema({
   licençaMedica: { type: String, required: true },
-  
+
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -25,7 +21,6 @@ const physicianSchema = new Schema({
 const Physician = mongoose.model('Médico', physicianSchema);
 module.exports = Physician;
 
-// Later:
 /*
 const drSmith = new Physician({
   userType: "PHYSICIAN", // Required

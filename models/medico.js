@@ -1,8 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-//import { User } from './user';
 const physicianSchema = new Schema({
     licençaMedica: { type: String, required: true },
     user: {
@@ -19,7 +17,6 @@ const physicianSchema = new Schema({
 //export const Physician = User.discriminator('Physician', physicianSchema);
 const Physician = mongoose.model('Médico', physicianSchema);
 module.exports = Physician;
-// Later:
 /*
 const drSmith = new Physician({
   userType: "PHYSICIAN", // Required
