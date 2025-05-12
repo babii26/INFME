@@ -29,7 +29,7 @@ router.post('/Register/User', function (req, res) {
         try {
             const { name, email, password, userType, isAdmin, active } = req.body; // Extrair as variáveis do corpo da requisição
             // Criar uma nova instância do utilizador recorrendo ao modelo
-            var newUser = new userModel({
+            var newUser = new userModelo({
                 name,
                 email,
                 password,
