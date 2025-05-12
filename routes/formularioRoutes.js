@@ -44,7 +44,7 @@ router.post('/responder', (req, res) => __awaiter(void 0, void 0, void 0, functi
             respostas,
             risco
         });
-        const mensagem = `O paciente ${pacienteId} tem risco ${risco} de cancro da próstata.`;
+        const mensagem = `O paciente ${pacienteId} tem ${risco} risco  de cancro da próstata.`;
         yield Alerta_1.default.create({
             pacienteId,
             medicoId,

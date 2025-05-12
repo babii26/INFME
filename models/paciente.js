@@ -16,3 +16,5 @@ const patientSchema = new Schema({
             message: [{ type: String }]
         }],
 });
+const Paciente = mongoose.model('Paciente', patientSchema);
+module.exports = Paciente;

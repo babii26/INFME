@@ -1,18 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Physician = void 0;
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-const user_1 = require("./user");
+//import { User } from './user';
 const physicianSchema = new Schema({
     licençaMedica: { type: String, required: true },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
     alerts: [{
             alertNumber: { type: Number, default: 0 },
             patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient' },
             message: [{ type: String }]
         }],
 });
-exports.Physician = user_1.User.discriminator('Physician', physicianSchema);
+//export const Physician = User.discriminator('Physician', physicianSchema);
+const Physician = mongoose.model('Médico', physicianSchema);
+module.exports = Physician;
 // Later:
 /*
 const drSmith = new Physician({
