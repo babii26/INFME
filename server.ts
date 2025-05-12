@@ -12,6 +12,7 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var UserRoutes = require('./routes/UserRoutes');
 var formularioRoutes = require('./routes/UserRoutes');
+var AlertaRoutes = require('./routes/AlertaRoutes');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -38,8 +39,8 @@ app.use('/med', UserRoutes);
 var formularioRoutes = require('./routes/formularioRoutes');
 app.use('/formulario', formularioRoutes);
 
-
-
+var AlertaRoutes = require ('./routes/AlertaRoutes');
+app.use('/alerta', AlertaRoutes);
 
 
 
