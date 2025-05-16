@@ -33,8 +33,6 @@ router.post('/Register/User', async function(req:any, res:any) {
       active
   });
 
-  console.log(newUser);
-
     // Gravar o utilizador na base de dados
     await newUser.save();
 
@@ -48,14 +46,16 @@ router.post('/Register/User', async function(req:any, res:any) {
 // Rota para registar um médico - POST http://localhost:8080/med/Register/Physician
 router.post('/Register/Physician', async function(req:any, res:any) {
     try {
-      const {specialty, user} = req.body; 
+      const {licençaMedica, user} = req.body; 
   
       // Criar uma nova instância do médico recorrendo ao modelo
       var newPhisycian = new physicianModel({
-        specialty,
+        licençaMedica,
         user
     });
   
+    console.log(newPhisycian);
+
       // Gravar o novo médico na base de dados
       await newPhisycian.save();
   

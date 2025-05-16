@@ -37,7 +37,6 @@ router.post('/Register/User', function (req, res) {
                 isAdmin,
                 active
             });
-            console.log(newUser);
             // Gravar o utilizador na base de dados
             yield newUser.save();
             res.status(201).json({ message: 'Utilizador registado com sucesso!', utilizador: newUser });
@@ -51,12 +50,13 @@ router.post('/Register/User', function (req, res) {
 router.post('/Register/Physician', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { specialty, user } = req.body;
+            const { licençaMedica, user } = req.body;
             // Criar uma nova instância do médico recorrendo ao modelo
             var newPhisycian = new physicianModel({
-                specialty,
+                licençaMedica,
                 user
             });
+            console.log(newPhisycian);
             // Gravar o novo médico na base de dados
             yield newPhisycian.save();
             res.status(201).json({ message: 'Médico registado com sucesso!', physician: newPhisycian });
