@@ -12,13 +12,13 @@ var Schema = mongoose.Schema;
     email: { type: String, required: true },
     userType: {
       type: String,
-      required: true,
+      required: false,
       enum: ["PACIENTE", "MEDICO"] //Valores aceitáveis
     },
-    isAdmin: { type: Boolean, default: false }, //n sei se são precisos admins, portanto por agora fica
+    isAdmin: { type: Boolean, default: false, required: false}, //n sei se são precisos admins, portanto por agora fica
+    active: { type: Boolean, default: true, required: false},
     })
 
 const userModel = mongoose.model('User', userSchema);
-export { userModel as User };
-
-//module.exports = userModel;
+//export { userModel as User };
+module.exports = userModel;

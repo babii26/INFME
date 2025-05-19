@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var bodyParser = require("body-parser");
 
-var userModel = require("../models/user");
+var userModelo = require("../models/user");
 var patientModel = require("../models/paciente");
 var physicianModel = require("../models/medico");
 var VerifyToken = require("../auth/VerifyToken");
@@ -19,15 +19,18 @@ router.get('/', function(req:any, res:any) {
 
 // Rota para registar um utilizador - POST http://localhost:8080/med/Register/User
 router.post('/Register/User', async function(req:any, res:any) {
+
   try {
-    const {name, email, password, isAdmin} = req.body; // Extrair as variáveis do corpo da requisição
+    const {name, email, password, userType, isAdmin, active} = req.body; // Extrair as variáveis do corpo da requisição
 
     // Criar uma nova instância do utilizador recorrendo ao modelo
-    var newUser = new userModel({
+    var newUser = new userModelo({
       name,
       email,
       password,
-      isAdmin
+      userType,
+      isAdmin,
+      active
   });
 
     // Gravar o utilizador na base de dados
@@ -43,14 +46,16 @@ router.post('/Register/User', async function(req:any, res:any) {
 // Rota para registar um médico - POST http://localhost:8080/med/Register/Physician
 router.post('/Register/Physician', async function(req:any, res:any) {
     try {
-      const {specialty, user} = req.body; 
+      const {licençaMedica, user} = req.body; 
   
       // Criar uma nova instância do médico recorrendo ao modelo
       var newPhisycian = new physicianModel({
-        specialty,
+        licençaMedica,
         user
     });
   
+    console.log(newPhisycian);
+
       // Gravar o novo médico na base de dados
       await newPhisycian.save();
   

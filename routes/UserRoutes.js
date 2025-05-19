@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var bodyParser = require("body-parser");
-var userModel = require("../models/user");
+var userModelo = require("../models/user");
 var patientModel = require("../models/paciente");
 var physicianModel = require("../models/medico");
 var VerifyToken = require("../auth/VerifyToken");
@@ -27,13 +27,15 @@ router.get('/', function (req, res) {
 router.post('/Register/User', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { name, email, password, isAdmin } = req.body; // Extrair as variáveis do corpo da requisição
+            const { name, email, password, userType, isAdmin, active } = req.body; // Extrair as variáveis do corpo da requisição
             // Criar uma nova instância do utilizador recorrendo ao modelo
-            var newUser = new userModel({
+            var newUser = new userModelo({
                 name,
                 email,
                 password,
-                isAdmin
+                userType,
+                isAdmin,
+                active
             });
             // Gravar o utilizador na base de dados
             yield newUser.save();
@@ -48,12 +50,13 @@ router.post('/Register/User', function (req, res) {
 router.post('/Register/Physician', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { specialty, user } = req.body;
+            const { licençaMedica, user } = req.body;
             // Criar uma nova instância do médico recorrendo ao modelo
             var newPhisycian = new physicianModel({
-                specialty,
+                licençaMedica,
                 user
             });
+            console.log(newPhisycian);
             // Gravar o novo médico na base de dados
             yield newPhisycian.save();
             res.status(201).json({ message: 'Médico registado com sucesso!', physician: newPhisycian });
