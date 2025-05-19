@@ -15,7 +15,6 @@ router.get('/medico/:medicoId', async (_req, res) => {
     console.error('Erro ao buscar alertas do médico:', error);
     res.status(500).json({ error: 'Erro ao buscar alertas' });
   }
-  
 });
 
 // GET /alertas/paciente/:pacienteId
