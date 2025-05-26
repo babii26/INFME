@@ -44,6 +44,16 @@ router.post('/responder', (req, res) => __awaiter(void 0, void 0, void 0, functi
             respostas,
             risco
         });
+        //function calcularRisco(respostas: any[], perguntas: any[]): 'BAIXO' | 'MODERADO' | 'ELEVADO' {
+        // let total = 0;
+        // respostas.forEach((r) => {
+        //const pergunta = perguntas.find(p => p._id.toString() === r.perguntaId);
+        //if (pergunta && r.resposta === true) total += pergunta.peso;
+        //});
+        //if (total >= 15) return 'ELEVADO';
+        //if (total >= 7) return 'MODERADO';
+        //return 'BAIXO';
+        //}
         const mensagem = `O paciente ${pacienteId} tem ${risco} risco  de cancro da próstata.`;
         yield Alerta_1.default.create({
             pacienteId,
