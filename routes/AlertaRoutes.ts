@@ -7,9 +7,9 @@ const router = express.Router();
 
 // GET /alertas/medico/:medicoId
 // Lista todos os alertas enviados para um médico
-router.get('/medico/:medicoId', async (_req, res) => {
+router.get('/medico/:medicoId', async function(req:any, res:any) {
   try {
-    const alertas = await Alerta.find({ medicoId: _req.params.medicoId }).sort({ data: -1 });
+    const alertas = await Alerta.find({ medicoId: req.params.medicoId }).sort({ data: -1 });
     res.status(200).json(alertas);
   } catch (error) {
     console.error('Erro ao buscar alertas do médico:', error);
@@ -19,9 +19,9 @@ router.get('/medico/:medicoId', async (_req, res) => {
 
 // GET /alertas/paciente/:pacienteId
 // Lista todos os alertas recebidos por um paciente
-router.get('/paciente/:pacienteId', async (_req, res) => {
+router.get('/paciente/:pacienteId', async function(req:any, res:any) {
   try {
-    const alertas = await Alerta.find({ pacienteId: _req.params.pacienteId }).sort({ data: -1 });
+    const alertas = await Alerta.find({ pacienteId: req.params.pacienteId }).sort({ data: -1 });
     res.status(200).json(alertas);
   } catch (error) {
     console.error('Erro ao buscar alertas do paciente:', error);
@@ -31,10 +31,10 @@ router.get('/paciente/:pacienteId', async (_req, res) => {
 
 // PUT /alertas/:id/lido
 // Marca um alerta como lido
-router.put('/:id/lido', async (_req, res) => {
+router.put('/:id/lido',async function(req:any, res:any){
   try {
     const alerta = await Alerta.findByIdAndUpdate(
-      _req.params.id,
+      req.params.id,
       { lido: true },
       { new: true }
     );
