@@ -7,7 +7,14 @@ var Schema = mongoose.Schema;
     medico = "MEDICO",
     administ = "ADMIN"
   }
-
+export interface User {
+    _id: string; 
+    name: string;
+    password: string;
+    email: string;
+    isAdmin: boolean;
+  }
+  
   const userSchema = new Schema({
     name: { type: String, required: true },
     password: { type: String, required: true },
