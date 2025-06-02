@@ -22,5 +22,6 @@ const patientSchema = new Schema({
 
 })
 
-const Paciente = mongoose.model('Paciente', patientSchema);
+export const Paciente = mongoose.model('Paciente', patientSchema);
 module.exports = Paciente;
+
