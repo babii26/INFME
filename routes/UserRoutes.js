@@ -89,7 +89,7 @@ router.post('/Register/Patient', function (req, res) {
 router.post('/login', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const user = yield userModel.findOne({ email: req.body.email, password: req.body.password }).exec();
+            const user = yield userModelo.findOne({ email: req.body.email, password: req.body.password }).exec();
             if (!user) {
                 return res.status(401).json({ success: false, message: 'utilizador não encontrado!' });
             }
@@ -208,7 +208,7 @@ router.delete('/DeleteUser/:user_id', VerifyToken, function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         if (yield hasRole(req.user, 'administrator', res)) {
             try {
-                const deletedUser = yield userModel.findByIdAndDelete(req.params.user_id);
+                const deletedUser = yield userModelo.findByIdAndDelete(req.params.user_id);
                 if (!deletedUser) {
                     return res.status(404).json({ message: 'Utilizador não encontrado' });
                 }
@@ -229,7 +229,7 @@ router.get('/ListUsers', VerifyToken, function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         if (yield hasRole(req.user, 'administrator', res)) {
             try {
-                const users = yield userModel.find().exec();
+                const users = yield userModelo.find().exec();
                 console.log(users);
                 if (users.length === 0) {
                     return res.status(404).json({ message: 'Nenhum utilizador encontrado.' });
@@ -247,7 +247,7 @@ router.get('/ListUsers', VerifyToken, function (req, res) {
 });
 function hasRole(userEmail, role, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const user = yield userModel.findOne({ email: userEmail }).exec();
+        const user = yield userModelo.findOne({ email: userEmail }).exec();
         console.log(user.isAdmin);
         if (!user) {
             res.json({ success: false, message: 'Falha na autenticação.' });

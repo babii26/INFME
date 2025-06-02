@@ -1,0 +1,15 @@
+<div style="text-align:center; padding-top: 60px;">
+  <h1>
+    Sistema de Recomendação Médico Med-Checker
+  </h1>
+</div>
+
+<nav *ngIf = "isHomePage()">
+  <ul>
+    <li><a routerLink="/login">Login</a></li>
+  </ul>
+</nav>
+
+
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>

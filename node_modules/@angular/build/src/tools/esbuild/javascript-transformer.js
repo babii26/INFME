@@ -39,6 +39,9 @@ class JavaScriptTransformer {
         this.#fileCacheKeyBase = Buffer.from(JSON.stringify(this.#commonOptions), 'utf-8');
     }
     #ensureWorkerPool() {
+        if (this.#workerPool) {
+            return this.#workerPool;
+        }
         const workerPoolOptions = {
             filename: require.resolve('./javascript-transformer-worker'),
             maxThreads: this.maxThreads,
@@ -48,7 +51,7 @@ class JavaScriptTransformer {
         if (process.execArgv.length !== filteredExecArgv.length) {
             workerPoolOptions.execArgv = filteredExecArgv;
         }
-        this.#workerPool ??= new worker_pool_1.WorkerPool(workerPoolOptions);
+        this.#workerPool = new worker_pool_1.WorkerPool(workerPoolOptions);
         return this.#workerPool;
     }
     /**

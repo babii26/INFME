@@ -14,6 +14,12 @@ export interface CompilerPluginOptions {
     sourcemap: boolean | 'external';
     tsconfig: string;
     jit?: boolean;
+    /**
+     * Include class metadata and JIT information in built code.
+     * The Angular TestBed APIs require additional metadata for the Angular aspects of the application
+     * such as Components, Modules, Pipes, etc.
+     * TestBed may also leverage JIT capabilities during testing (e.g., overrideComponent).
+     */
     includeTestMetadata?: boolean;
     advancedOptimizations?: boolean;
     thirdPartySourcemaps?: boolean;
