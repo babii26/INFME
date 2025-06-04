@@ -89,7 +89,7 @@ export class AuthService {
           }
 
           return this.getCurrentUser().pipe(
-            switchMap((user: User) => {
+            switchMap((user: User) => {    
               this.currentUser = user;
 
               if (response.userType === 'physician') { // Se for médico, é obtido o ID do médico que corresponde ao user em questão
