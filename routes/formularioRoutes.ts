@@ -1,7 +1,7 @@
 import express from 'express';
-import Pergunta from '../models/Pergunta';
-import RespostaFormulario from '../models/RespostaFormulario';
-import Alerta from '../models/Alerta';
+import Pergunta from '../Frontend/src/app/Pergunta';
+import RespostaFormulario from '../Frontend/src/app/RespostaFormulario';
+import Alerta from '../Frontend/src/app/Alerta';
 
 const router = express.Router();
 

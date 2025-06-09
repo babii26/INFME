@@ -1,6 +1,6 @@
 // src/routes/AlertaRoutes.ts
 import express from 'express';
-import Alerta from '../models/Alerta';
+import Alerta from '../Frontend/src/app/Alerta';
 
 
 const router = express.Router();

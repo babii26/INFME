@@ -89,7 +89,7 @@ function createCompilerPlugin(pluginOptions, compilationOrFactory, stylesheetBun
                 sourcemap: !!pluginOptions.sourcemap,
                 thirdPartySourcemaps: pluginOptions.thirdPartySourcemaps,
                 advancedOptimizations: pluginOptions.advancedOptimizations,
-                jit: pluginOptions.jit,
+                jit: pluginOptions.jit || pluginOptions.includeTestMetadata,
             }, environment_options_1.maxWorkers, cacheStore?.createCache('jstransformer'));
             // Setup defines based on the values used by the Angular compiler-cli
             build.initialOptions.define ??= {};
@@ -552,6 +552,7 @@ function createCompilerOptionsTransformer(setupWarnings, pluginOptions, preserve
             externalRuntimeStyles: pluginOptions.externalRuntimeStyles,
             _enableHmr: !!pluginOptions.templateUpdates,
             supportTestBed: !!pluginOptions.includeTestMetadata,
+            supportJitMode: !!pluginOptions.includeTestMetadata,
         };
     };
 }

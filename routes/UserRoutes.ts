@@ -90,7 +90,7 @@ router.post('/Register/Patient', async function(req:any, res:any) {
 // Rota para realizar o login (todos os utilizadores) - POST http://localhost:8080/med/login
 router.post('/login', async function(req: any, res: any) {
   try {
-      const user = await userModel.findOne({ email: req.body.email, password: req.body.password}).exec();
+      const user = await userModelo.findOne({ email: req.body.email, password: req.body.password}).exec();
 
       if (!user) {
           return res.status(401).json({ success: false, message: 'utilizador não encontrado!' });
@@ -233,7 +233,7 @@ router.post('/send/alerts', async function(req:any, res:any) {
 router.delete('/DeleteUser/:user_id', VerifyToken, async function(req:any, res:any)  {
   if (await hasRole(req.user, 'administrator', res)) { 
     try {
-      const deletedUser = await userModel.findByIdAndDelete(req.params.user_id);
+      const deletedUser = await userModelo.findByIdAndDelete(req.params.user_id);
 
       if (!deletedUser) {
         return res.status(404).json({ message: 'Utilizador não encontrado' });
@@ -256,7 +256,7 @@ router.get('/ListUsers',  VerifyToken, async function(req:any, res:any){
     
       try {
           
-          const users =  await userModel.find().exec();
+          const users =  await userModelo.find().exec();
 
           console.log(users);
 
@@ -274,7 +274,7 @@ router.get('/ListUsers',  VerifyToken, async function(req:any, res:any){
 
 async function hasRole(userEmail: any, role: string, res: any):Promise<boolean> {
  
-      const user = await userModel.findOne({ email: userEmail }).exec();
+      const user = await userModelo.findOne({ email: userEmail }).exec();
       console.log(user.isAdmin);
 
 
