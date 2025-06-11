@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Área Reservada ao Paciente</h1>
+  <div class="user-info-container">
+    <h2>Perfil</h2>
+    <div class="user-info">
+      <img src="../../assets/profilePhoto.png" alt="User Avatar" class="img-thumbnail">
+      <div class="user-details">
+        <h3>{{ User.firstName }} {{ User.lastName }}</h3>
+        <p>ID: {{ User._id }}</p>
+        <button class="btn btn-primary">Mudar Palavra-Passe</button>
+      </div>
+    </div>
+    <hr>
+    <div style="display: flex; flex-direction: row;justify-content: space-around; margin: 10px; text-align: center;">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="User.email" disabled>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" class="form-control" id="phone" [(ngModel)]="User.nrTelemovel" disabled>
+      </div>
+      <div class="form-group">
+        <label for="birthDate">Birth Date:</label>
+        <input type="date" class="form-control" id="birthDate" [(ngModel)]="User.dataNascimento" disabled>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: center; margin: 10px; text-align: center;">
+      <div class="form-group">
+        <label for="supervisor">Supervisor:</label>
+        <input type="text" class="form-control" id="Médico" [(ngModel)]="medicoName" disabled>
+      </div>
+    </div>
+  </div>
+  <div class="button-container">
+    <button (click)="GoToFormulario()">Responder Questionário</button>
+    <button id="alertas" (click)="loadAlertas()">Ver Alertas</button>
+  </div>
+  <div *ngIf="showAlertas" class="modal">
+    <div class="modal-content">
+      <button (click)="closeAlertas()" class="close-button">X</button>
+      <h5>Alertas</h5>
+      <div *ngFor="let alerta of alertas">
+        <p>{{ alerta.message }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

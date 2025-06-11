@@ -1,0 +1,65 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+.hero-section {
+  background-color: #0196b1;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h5 {
+  font-weight: 700;
+}
+
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.btn-light {
+  background-color: #ffffff;
+  color: #0196b1;
+}
+
+.btn-light:hover {
+  background-color: #f0f0f0;
+}
+
+footer {
+  background-color: #0196b1;
+  color: white;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1200px; /* Limita a largura do container */
+}
+
+@media (max-width: 768px) {
+  .lead {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}

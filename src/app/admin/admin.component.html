@@ -1,0 +1,58 @@
+<!-- <div class="user-list-container">
+  <h1>Utilizadores</h1>
+  <table>
+    <thead>
+      <tr>
+        <th (click)="sortData('firstName')">First Name</th>
+        <th (click)="sortData('dataNascimento')">Date of Birth</th>
+        <th (click)="sortData('genero')">Gender</th>
+        <th (click)="sortData('email')">Email</th>
+        <th (click)="sortData('nrTelemovel')">Phone</th>
+        <th (click)="sortData('tipoUtilizador')">User Type</th>
+        <th (click)="sortData('estadoUtilizador')">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" (click)="showUserDetails(user)">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.dataNascimento | date }}</td>
+        <td>{{ user.genero }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.nrTelemovel }}</td>
+        <td>{{ user.tipoUtilizador }}</td>
+        <td [ngClass]="{'status-active': user.estadoUtilizador, 'status-inactive': !user.estadoUtilizador}">
+          {{ user.estadoUtilizador ? 'Active' : 'Inactive' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedUser" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</h2>
+      <p><strong>Date of Birth:</strong> {{ selectedUser.dataNascimento | date }}</p>
+      <p><strong>Gender:</strong> {{ selectedUser.genero }}</p>
+      <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+      <p><strong>Phone:</strong> {{ selectedUser.nrTelemovel }}</p>
+      <p><strong>User Type:</strong> {{ selectedUser.tipoUtilizador }}</p>
+      <p><strong>Status:</strong> {{ selectedUser.estadoUtilizador ? 'Active' : 'Inactive' }}</p>
+      <button (click)="loadMedicos()">Assign Doctor</button>
+      <button (click)="ativarUtilizador(selectedUser)">Activate/Deactivate User</button>
+    </div>
+  </div>
+
+  <div *ngIf="showDoctorsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeDoctorsModal()">&times;</span>
+      <h2>Select a Doctor</h2>
+      <ul>
+        <li *ngFor="let medico of medicos">
+          {{ medico.firstName + medico.lastName}}
+          <button (click)="assignDoctor(selectedUser!, medico)">Select</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+-->

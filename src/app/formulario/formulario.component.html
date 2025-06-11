@@ -1,0 +1,300 @@
+<div class="form-container">
+  <form (ngSubmit)="submitForm()">
+    <div class="form-sections">
+      <!-- Informação Pessoal -->
+      <div>
+        <h2>Questionário</h2>
+        <hr>
+        <h2>Informação Pessoal</h2>
+        
+        <label>Idade:</label>
+        <div>
+          <label *ngFor="let age of ['18-30', '30-50', '50-65', '+65']">
+            <input type="radio" name="age" [(ngModel)]="Paciente.respostasForm.personalInfo.age" [value]="age" required>
+            {{ age }}
+          </label>
+        </div>
+        <label>Género:</label>
+        <div>
+          <label>
+            <input type="radio" name="gender" [(ngModel)]="Paciente.respostasForm.personalInfo.gender" value="Masculino"
+              required> Masculino
+          </label>
+          <label>
+            <input type="radio" name="gender" [(ngModel)]="Paciente.respostasForm.personalInfo.gender" value="Feminino"
+              required> Feminino
+          </label>
+        </div>
+        <label>Etnia:</label>
+        <div>
+          <label *ngFor="let race of ['Caucasiana', 'Latina', 'Africana', 'Asiática']">
+            <input type="radio" name="race" [(ngModel)]="Paciente.respostasForm.personalInfo.race" [value]="race"
+              required> {{ race }}
+          </label>
+        </div>
+        <label>Tem filhos?</label>
+        <div>
+          <label *ngFor="let hasChildren of ['0', '1', '2', '3+']">
+            <input type="radio" name="hasChildren" [(ngModel)]="Paciente.respostasForm.personalInfo.hasChildren"
+              [value]="hasChildren" required> {{ hasChildren }}
+          </label>
+        </div>
+      </div>
+      <!-- Histórico Médico -->
+      <div>
+        <hr>
+        <h2>Histórico Médico</h2>
+        
+        <label>Teve a Menarca (primeira menstruação) antes dos 12?</label>
+        <div>
+          <label>
+            <input type="radio" name="menarcheBefore12"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.menarcheBefore12" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="menarcheBefore12"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.menarcheBefore12" [value]="false" required> Não
+          </label>
+        </div>
+        <label>Encontra-se Menopausa?</label>
+        <div>
+          <label>
+            <input type="radio" name="menopause" [(ngModel)]="Paciente.respostasForm.medicalHistory.menopause"
+              [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="menopause" [(ngModel)]="Paciente.respostasForm.medicalHistory.menopause"
+              [value]="false" required> Não
+          </label>
+        </div>
+        <label>Teve cancro anteriormente?</label>
+        <div>
+          <label>
+            <input type="radio" name="hadCancerBefore"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.hadCancerBefore" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="hadCancerBefore"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.hadCancerBefore" [value]="false" required> Não
+          </label>
+        </div>
+        <label>Têm conhecimento de alguma alteração genética (BRAC)? </label>
+        <div>
+          <label>
+            <input type="radio" name="geneticProblems"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.geneticProblems" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="geneticProblems"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.geneticProblems" [value]="false" required> Não
+          </label>
+        </div>
+        <label>Têm conhecimento da existência de algum quisto mamário? </label>
+        <div>
+          <label>
+            <input type="radio" name="hasBreatsCysts" [(ngModel)]="Paciente.respostasForm.medicalHistory.hasBreatsCysts"
+              [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="hasBreatsCysts" [(ngModel)]="Paciente.respostasForm.medicalHistory.hasBreatsCysts"
+              [value]="false" required> Não
+          </label>
+        </div>
+        <label>Já fez algum Tratamento hormonal?</label>
+        <div>
+          <label>
+            <input type="radio" name="hormonalTreatment"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.hormonalTreatment" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="hormonalTreatment"
+              [(ngModel)]="Paciente.respostasForm.medicalHistory.hormonalTreatment" [value]="false" required> Não
+          </label>
+        </div>
+      </div>
+      <!-- Estilo de Vida -->
+      <div>
+        <hr>
+        <h2>Estilo de Vida</h2>
+        <label>Pratica exercício físico, regularmente? </label>
+        <div>
+          <label>
+            <input type="radio" name="exercisesRegularly"
+              [(ngModel)]="Paciente.respostasForm.lifestyle.exercisesRegularly" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="exercisesRegularly"
+              [(ngModel)]="Paciente.respostasForm.lifestyle.exercisesRegularly" [value]="false" required> Não
+          </label>
+        </div>
+        <label>É fumador? </label>
+        <div>
+          <label>
+            <input type="radio" name="smokes" [(ngModel)]="Paciente.respostasForm.lifestyle.smokes" [value]="true"
+              required> Sim
+          </label>
+          <label>
+            <input type="radio" name="smokes" [(ngModel)]="Paciente.respostasForm.lifestyle.smokes" [value]="false"
+              required> Não
+          </label>
+        </div>
+        <label>Consome bebidas alcoólicas, regularmente? </label>
+        <div>
+          <label>
+            <input type="radio" name="drinks" [(ngModel)]="Paciente.respostasForm.lifestyle.drinks" [value]="true"
+              required> Sim
+          </label>
+          <label>
+            <input type="radio" name="drinks" [(ngModel)]="Paciente.respostasForm.lifestyle.drinks" [value]="false"
+              required> Não
+          </label>
+        </div>
+        <label>Costuma auto rastrear-se?</label>
+        <div>
+          <label>
+            <input type="radio" name="selfTracking" [(ngModel)]="Paciente.respostasForm.lifestyle.selfTracking"
+              [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="selfTracking" [(ngModel)]="Paciente.respostasForm.lifestyle.selfTracking"
+              [value]="false" required> Não
+          </label>
+        </div>
+      </div>
+      <!-- Histórico Familiar -->
+      <div>
+        <hr>
+        <h2>Histórico Familiar</h2>
+        <label>Tem familiares que tiveram/ têm cancro da mama? </label>
+        <div>
+          <label>
+            <input type="radio" name="cancer" [(ngModel)]="Paciente.respostasForm.familyHistory.cancer" [value]="true"
+              required> Sim
+          </label>
+          <label>
+            <input type="radio" name="cancer" [(ngModel)]="Paciente.respostasForm.familyHistory.cancer" [value]="false"
+              required> Não
+          </label>
+        </div>
+      </div>
+      <!-- Principais Fatores de Riscol -->
+      <div>
+        <hr>
+        <h2>Principais Fatores de Risco</h2>
+        <label>Reparou em alguma alteração do tamanho/forma da mama? </label>
+        <div>
+          <label>
+            <input type="radio" name="sizeAndShapeChanges"
+              [(ngModel)]="Paciente.respostasForm.majorRiskFactors.sizeAndShapeChanges" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="sizeAndShapeChanges"
+              [(ngModel)]="Paciente.respostasForm.majorRiskFactors.sizeAndShapeChanges" [value]="false" required> Não
+          </label>
+        </div>
+        <label>Sente sensibilidade no peito? </label>
+        <div>
+          <label>
+            <input type="radio" name="breastTenderness"
+              [(ngModel)]="Paciente.respostasForm.majorRiskFactors.breastTenderness" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="breastTenderness"
+              [(ngModel)]="Paciente.respostasForm.majorRiskFactors.breastTenderness" [value]="false" required> Não
+          </label>
+        </div>
+        <label>Há secreção ou perda de líquido pelo mamilo? </label>
+        <div>
+          <label>
+            <input type="radio" name="nippleDischarge"
+              [(ngModel)]="Paciente.respostasForm.majorRiskFactors.nippleDischarge" [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="nippleDischarge"
+              [(ngModel)]="Paciente.respostasForm.majorRiskFactors.nippleDischarge" [value]="false" required> Não
+          </label>
+        </div>
+        <label>Sente algum nódulo/ espessamento na mama/perto da mama/ zona axilar?</label>
+        <div>
+          <label>
+            <input type="radio" name="breastNodule" [(ngModel)]="Paciente.respostasForm.majorRiskFactors.breastNodule"
+              [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="breastNodule" [(ngModel)]="Paciente.respostasForm.majorRiskFactors.breastNodule"
+              [value]="false" required> Não
+          </label>
+        </div>
+        <label>Tem alguma dor constante na mama? </label>
+        <div>
+          <label>
+            <input type="radio" name="breastPain" [(ngModel)]="Paciente.respostasForm.majorRiskFactors.breastPain"
+              [value]="true" required> Sim
+          </label>
+          <label>
+            <input type="radio" name="breastPain" [(ngModel)]="Paciente.respostasForm.majorRiskFactors.breastPain"
+              [value]="false" required> Não
+          </label>
+        </div>
+      </div>
+      <hr>
+      <div class="finalizar">
+        <button type="submit" class="btn btn-primary"> Finalizar </button>
+      </div>
+
+    </div>
+    
+  </form>
+
+  <!-- Container de Respostas -->
+  <div class="summary">
+    <h2>Resumo</h2>
+    <div>
+      <h3>Informação Pessoal</h3>
+      <ul>
+        <li>Idade: {{ Paciente.respostasForm.personalInfo.age }}</li>
+        <li>Género: {{ Paciente.respostasForm.personalInfo.gender }}</li>
+        <li>Etnia: {{ Paciente.respostasForm.personalInfo.race }}</li>
+        <li>Filhos: {{ Paciente.respostasForm.personalInfo.hasChildren }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Histórico Médico</h3>
+      <ul>
+        <li>Menarca antes dos 12: {{ Paciente.respostasForm.medicalHistory.menarcheBefore12 ? 'Sim' : 'Não' }}</li>
+        <li>Menopausa: {{ Paciente.respostasForm.medicalHistory.menopause ? 'Sim' : 'Não' }}</li>
+        <li>Teve cancro antes: {{ Paciente.respostasForm.medicalHistory.hadCancerBefore ? 'Sim' : 'Não' }}</li>
+        <li>Problemas genéticos: {{ Paciente.respostasForm.medicalHistory.geneticProblems ? 'Sim' : 'Não' }}</li>
+        <li>Quistos mamários: {{ Paciente.respostasForm.medicalHistory.hasBreatsCysts ? 'Sim' : 'Não' }}</li>
+        <li>Tratamento hormonal: {{ Paciente.respostasForm.medicalHistory.hormonalTreatment ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Estilo de Vida</h3>
+      <ul>
+        <li>Exercício Físico: {{ Paciente.respostasForm.lifestyle.exercisesRegularly ? 'Sim' : 'Não' }}</li>
+        <li>Fuma: {{ Paciente.respostasForm.lifestyle.smokes ? 'Sim' : 'Não' }}</li>
+        <li>Bebe: {{ Paciente.respostasForm.lifestyle.drinks ? 'Sim' : 'Não' }}</li>
+        <li>AutoRastreio: {{ Paciente.respostasForm.lifestyle.selfTracking ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Histórico Familiar</h3>
+      <ul>
+        <li>Precedentes Cancerígenos: {{ Paciente.respostasForm.familyHistory.cancer ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Principais Fatores de Risco</h3>
+      <ul>
+        <li>Mudanças de tamanho e forma: {{ Paciente.respostasForm.majorRiskFactors.sizeAndShapeChanges ? 'Sim' : 'Não'
+          }}</li>
+        <li>Sensibilidade mamária: {{ Paciente.respostasForm.majorRiskFactors.breastTenderness ? 'Sim' : 'Não' }}
+        </li>
+        <li>Secreção no mamilo: {{ Paciente.respostasForm.majorRiskFactors.nippleDischarge ? 'Sim' : 'Não' }}</li>
+        <li>Nódulo na mama: {{ Paciente.respostasForm.majorRiskFactors.breastNodule ? 'Sim' : 'Não' }}</li>
+        <li>Dor na mama: {{ Paciente.respostasForm.majorRiskFactors.breastPain ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

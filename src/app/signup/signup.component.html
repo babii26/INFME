@@ -1,0 +1,76 @@
+<div class="sign-up-container">
+  <form (ngSubmit)="onSubmit()">
+    <h2>Sign Up</h2>
+    <div class="form-group">
+      <input type="text" class="form-control" name="firstName" ngModel required placeholder="Nome"
+        [(ngModel)]="novoUser.firstName" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="lastName" ngModel required placeholder="Apelido"
+        [(ngModel)]="novoUser.lastName" />
+    </div>
+    <div class="form-group">
+      <input type="date" class="form-control" name="dataNascimento" ngModel required placeholder="Data de Nascimento"
+        [(ngModel)]="novoUser.dataNascimento" />
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" name="nrTelemovel" ngModel required placeholder="Número de Telemóvel"
+        [(ngModel)]="novoUser.nrTelemovel" />
+    </div>
+
+    <div class="form-group">
+      <select class="form-control" name="genero" ngModel required [(ngModel)]="novoUser.genero">
+        <option value="" disabled selected>Selecione o seu gênero:</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control" name="email" ngModel required placeholder="Email" [(ngModel)]="novoUser.email" />
+    </div>
+
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" ngModel required placeholder="Palavra Passe"
+        [(ngModel)]="novoUser.password" />
+    </div>
+
+    <div class="form-group">
+      <select class="form-control" name="tipoUtilizador" ngModel required [(ngModel)]="novoUser.tipoUtilizador"
+        (change)="onTipoUtilizadorChange($event)">
+        <option value="" disabled selected>Selecione o tipo de Utilizador:</option>
+        <option value="medico">Medico</option>
+        <option value="paciente">Paciente</option>
+      </select>
+    </div>
+
+    <div *ngIf="novoUser.tipoUtilizador === 'medico'">
+      <div class="form-group">
+        <input type="text" class="form-control" name="nrCedula" ngModel required placeholder="Número de Cédula"
+          [(ngModel)]="novoMedico.nrCedula" />
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="especialidade" ngModel required placeholder="Especialidade"
+          [(ngModel)]="novoMedico.especialidade" />
+      </div>
+    </div>
+
+    <div *ngIf="novoUser.tipoUtilizador === 'paciente'">
+      <div class="form-group">
+        <input type="text" class="form-control" name="numUtente" ngModel required placeholder="Número de Utente"
+          [(ngModel)]="novoPaciente.numUtente" />
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="morada" ngModel required placeholder="Morada"
+          [(ngModel)]="novoPaciente.morada" />
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="nacionalidade" ngModel required placeholder="Nacionalidade"
+          [(ngModel)]="novoPaciente.nacionalidade" />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Criar uma nova conta</button>
+    <p>Já possui uma conta? <a routerLink="/login" class="text-Info">Logar</a></p>
+  </form>
+</div>
