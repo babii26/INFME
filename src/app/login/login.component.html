@@ -1,0 +1,46 @@
+
+  <title>Login - Área Reservada VIDA</title>
+
+  <div class="login-wrapper" >
+    <form class="login-box" (ngSubmit)="login()">
+      <h2 class="login-title">Área Reservada - VIDA</h2>
+
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          name="email"
+          ngModel
+          required
+          placeholder="Insira seu email"
+          [(ngModel)]="email"
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+          ngModel
+          required
+          placeholder="Insira sua senha"
+          [(ngModel)]="password"
+          autocomplete="current-password"
+          />
+      </div>
+
+      <button type="submit" class="btn-login" aria-label="Entrar na área reservada">Entrar</button>
+
+      <div class="links">
+        <a href="#" class="link">Esqueceu a senha?</a>
+        <span aria-hidden="true">|</span>
+        <a routerLink="/signup" class="link">Criar conta</a>
+      </div>
+    </form>
+  </div>
+
+

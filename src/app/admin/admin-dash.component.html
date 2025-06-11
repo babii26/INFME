@@ -1,0 +1,60 @@
+<nav class="sidebar" [class.open]="isSidebarOpen" aria-label="Navegação administrativa">
+  <div class="sidebar-header" tabindex="0">Admin VIDA</div>
+  <button class="nav-button" [class.active]="selected === 'dashboard'" (click)="select('dashboard')">
+    <span class="material-icons" aria-hidden="true">dashboard</span>
+    <span class="nav-text">Dashboard</span>
+  </button>
+  <button class="nav-button" [class.active]="selected === 'users'" (click)="select('users')">
+    <span class="material-icons" aria-hidden="true">people</span>
+    <span class="nav-text">Usuários</span>
+  </button>
+  <button class="nav-button" [class.active]="selected === 'reports'" (click)="select('reports')">
+    <span class="material-icons" aria-hidden="true">assessment</span>
+    <span class="nav-text">Relatórios</span>
+  </button>
+  <button class="nav-button" [class.active]="selected === 'settings'" (click)="select('settings')">
+    <span class="material-icons" aria-hidden="true">settings</span>
+    <span class="nav-text">Configurações</span>
+  </button>
+  <button class="nav-button logout" (click)="logout()">
+    <span class="material-icons" aria-hidden="true">logout</span>
+    <span class="nav-text">Sair</span>
+  </button>
+
+  <button class="sidebar-toggle" (click)="toggleSidebar()" aria-label="Alternar navegação">
+    <span class="material-icons">{{ isSidebarOpen ? 'menu_open' : 'menu' }}</span>
+  </button>
+</nav>
+
+<main class="main-content" tabindex="0">
+  <header class="main-header">
+    <h1>{{ pageTitle }}</h1>
+  </header>
+
+  <section *ngIf="selected === 'dashboard'" class="cards" aria-label="Resumo da administração">
+    <article class="card" tabindex="0">
+      <h3>Usuários Ativos</h3>
+      <p>1,234 usuários ativos neste mês.</p>
+    </article>
+
+    <article class="card" tabindex="0">
+      <h3>Relatórios</h3>
+      <p>15 relatórios pendentes para revisão.</p>
+    </article>
+
+    <article class="card" tabindex="0">
+      <h3>Alertas</h3>
+      <p>3 alertas críticos ativos no sistema.</p>
+    </article>
+  </section>
+
+  <section class="recent-activity" aria-label="Atividades recentes">
+    <h3>Atividades Recentes</h3>
+    <ul class="activity-list">
+      <li tabindex="0">Maria atualizou a política de privacidade.</li>
+      <li tabindex="0">João adicionou 10 novos usuários.</li>
+      <li tabindex="0">Relatório mensal enviado para revisão.</li>
+      <li tabindex="0">Sistema programado para manutenção.</li>
+    </ul>
+  </section>
+</main>

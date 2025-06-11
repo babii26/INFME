@@ -1,0 +1,151 @@
+.container {
+  max-width: 80%;
+  margin: 40px auto; /* Isso centraliza o contêiner horizontalmente */
+  padding: 20px;
+  background-color: #dbdbdbcf;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  color: #768cbc;
+}
+
+.user-info-container {
+  margin-bottom: 20px;
+  border: 1px solid #e2e0e0c4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color:#768cbc ;
+  
+}
+
+.user-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  color:#888 ;
+}
+
+.user-details h3 {
+  margin-bottom: 5px;
+  color:#768cbc ;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  width: 30%;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #768cbc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #768cbc;
+}
+
+.btn-primary {
+  background-color: #768cbc ;;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-primary:hover {
+  background-color: #5a6d9c;
+}
+
+
+.img-thumbnail {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+}
+
+hr{
+  width: 100%;
+  height: 1px;
+  background-color: #768cbc;
+}
+
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  background-color: #768cbc;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #5a6d9c;
+}

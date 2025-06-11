@@ -1,6 +1,6 @@
-import { User } from "./user";
-
-export interface Medico extends User{
-  licençaMedica: string,
-  user: string,
+export interface medico{
+  _id: string; 
+  user : string;
+  nrCedula     : Number;
+  especialidade: string;
 }

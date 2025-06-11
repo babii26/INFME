@@ -1,0 +1,131 @@
+<div *ngIf="isLoading" class="loading-spinner">
+  <div class="spinner"></div>
+</div>
+
+<div class="user-list-container" *ngIf="!isLoading">
+  <div class="header">
+    <h2>Médico: {{ User.firstName }} {{ User.lastName }}</h2>
+    <button (click)="toggleMedicoDetails()" class="details-button">Ver Dados Pessoais</button>
+  </div>
+
+  <div *ngIf="showMedicoDetails" class="container medico-details">
+    <h3>Dados Pessoais do Médico</h3>
+    <hr>
+    <p><strong>Nome:</strong> {{ User.firstName }} {{ User.lastName }}</p>
+    <p><strong>Email:</strong> {{ User.email }}</p>
+    <p><strong>Telefone:</strong> {{ User.nrTelemovel }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ User.dataNascimento | date }}</p>
+    <p><strong>Género:</strong> {{ User.genero }}</p>
+    <p><strong>Número da Cédula:</strong> {{ Medico.nrCedula }}</p>
+    <p><strong>Especialidade:</strong> {{ Medico.especialidade }}</p>
+
+  </div>
+  
+  <h3>Pacientes</h3>
+  <hr>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data de Nascimento</th>
+        <th>Género</th>
+        <th>Email</th>
+        <th>Telemóvel</th>
+        <th>Número de Utente</th>
+        <th>Morada</th>
+        <th>Nacionalidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of combinedList">
+        <td>{{ item.pacienteUser.firstName}}{{item.pacienteUser.lastName}}</td>
+        <td>{{ item.pacienteUser.dataNascimento | date }}</td>
+        <td>{{ item.pacienteUser.genero}}</td>
+        <td>{{ item.pacienteUser.email }}</td>
+        <td>{{ item.pacienteUser.nrTelemovel}}</td>
+        <td>{{ item.paciente.numUtente }}</td>
+        <td>{{ item.paciente.morada }}</td>
+        <td>{{ item.paciente.nacionalidade }}</td>
+        <td>
+          <button class="ver-mais-button" (click)="verMaisDetalhes(item)">Ver Mais</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="itemCombinedList" class="sidebar">
+    <div class="container resumo">
+    
+    <h4>Detalhes do Paciente</h4>
+    <hr>
+    <p><strong>Nome:</strong> {{ itemCombinedList.pacienteUser.firstName }} {{ itemCombinedList.pacienteUser.lastName }}</p>
+    <p><strong>Email:</strong> {{ itemCombinedList.pacienteUser.email }}</p>
+    <p><strong>Telefone:</strong> {{ itemCombinedList.pacienteUser.nrTelemovel }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ itemCombinedList.pacienteUser.dataNascimento | date }}</p>
+    <p><strong>Género:</strong> {{ itemCombinedList.pacienteUser.genero }}</p>
+    <p><strong>Morada:</strong> {{ itemCombinedList.paciente.morada }}</p>
+    <p><strong>Nacionalidade:</strong> {{ itemCombinedList.paciente.nacionalidade }}</p>
+  </div>
+  <!-- Container de Respostas -->
+  <div class="container resumo" >
+    
+    <h2>Resumo</h2>
+    <hr>
+    <div>
+      <h3>Informação Pessoal</h3>
+      <ul>
+        <li>Idade: {{ itemCombinedList.paciente.respostasForm.personalInfo.age }}</li>
+        <li>Gênero: {{ itemCombinedList.paciente.respostasForm.personalInfo.gender }}</li>
+        <li>Raça: {{ itemCombinedList.paciente.respostasForm.personalInfo.race }}</li>
+        <li>Tem filhos: {{ itemCombinedList.paciente.respostasForm.personalInfo.hasChildren }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Histórico Médico</h3>
+      <ul>
+        <li>Menarca antes dos 12: {{ itemCombinedList.paciente.respostasForm.medicalHistory.menarcheBefore12 ? 'Sim' : 'Não' }}</li>
+        <li>Menopausa: {{ itemCombinedList.paciente.respostasForm.medicalHistory.menopause ? 'Sim' : 'Não' }}</li>
+        <li>Teve câncer antes: {{ itemCombinedList.paciente.respostasForm.medicalHistory.hadCancerBefore ? 'Sim' : 'Não' }}</li>
+        <li>Problemas genéticos: {{ itemCombinedList.paciente.respostasForm.medicalHistory.geneticProblems ? 'Sim' : 'Não' }}</li>
+        <li>Cistos mamários: {{ itemCombinedList.paciente.respostasForm.medicalHistory.hasBreatsCysts ? 'Sim' : 'Não' }}</li>
+        <li>Tratamento hormonal: {{ itemCombinedList.paciente.respostasForm.medicalHistory.hormonalTreatment ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Estilo de Vida</h3>
+      <ul>
+        <li>Exercita-se regularmente: {{ itemCombinedList.paciente.respostasForm.lifestyle.exercisesRegularly ? 'Sim' : 'Não' }}</li>
+        <li>Fuma: {{ itemCombinedList.paciente.respostasForm.lifestyle.smokes ? 'Sim' : 'Não' }}</li>
+        <li>Bebe: {{ itemCombinedList.paciente.respostasForm.lifestyle.drinks ? 'Sim' : 'Não' }}</li>
+        <li>Autocontrole: {{ itemCombinedList.paciente.respostasForm.lifestyle.selfTracking ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Histórico Familiar</h3>
+      <ul>
+        <li>Câncer: {{ itemCombinedList.paciente.respostasForm.familyHistory.cancer ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Principais Fatores de Risco</h3>
+      <ul>
+        <li>Mudanças de tamanho e forma: {{ itemCombinedList.paciente.respostasForm.majorRiskFactors.sizeAndShapeChanges ? 'Sim' : 'Não'
+          }}</li>
+        <li>Sensibilidade nos seios: {{ itemCombinedList.paciente.respostasForm.majorRiskFactors.breastTenderness ? 'Sim' : 'Não' }}
+        </li>
+        <li>Secreção no mamilo: {{ itemCombinedList.paciente.respostasForm.majorRiskFactors.nippleDischarge ? 'Sim' : 'Não' }}</li>
+        <li>Nódulo no seio: {{ itemCombinedList.paciente.respostasForm.majorRiskFactors.breastNodule ? 'Sim' : 'Não' }}</li>
+        <li>Dor no seio: {{ itemCombinedList.paciente.respostasForm.majorRiskFactors.breastPain ? 'Sim' : 'Não' }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container resumo">
+    <h4>Alertas</h4>
+    <hr>
+    <div *ngFor="let alerta of alertas">
+      <p>{{ alerta.message }}</p>
+    </div>
+  </div>
+  </div>
+</div>
+
